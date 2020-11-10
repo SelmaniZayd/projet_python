@@ -1,5 +1,6 @@
 USE db;
 CREATE TABLE `flights` (
+  `flight_id` integer PRIMARY KEY auto_increment,
   `year` integer,
   `month` integer,
   `day` integer,
@@ -65,6 +66,7 @@ CREATE TABLE `weather` (
   `pressure` float null,
   `visib` float,
   `time_hour` timestamp
+
 );
 
 load data local infile '/var/lib/mysql-files/airlines.csv' 
@@ -89,5 +91,7 @@ ignore 1 rows;
 
 load data local infile '/var/lib/mysql-files/flights.csv' 
 into table db.flights
-columns terminated by ',' 
-ignore 1 rows;
+columns terminated by ','
+ignore 1 rows
+(year,month,day,dep_time,sched_dep_time,dep_delay,arr_time,sched_arr_time,arr_delay,carrier,flight,tailnum,origin,dest,air_time,distance,hour,minute,time_hour)
+;
