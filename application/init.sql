@@ -65,8 +65,8 @@ CREATE TABLE `weather` (
   `precip` float,
   `pressure` float null,
   `visib` float,
-  `time_hour` timestamp
-
+  `time_hour` timestamp,
+  PRIMARY KEY (`year` ,`month`  , `day`, `hour`, `origin`)
 );
 
 load data local infile '/var/lib/mysql-files/airlines.csv' 
