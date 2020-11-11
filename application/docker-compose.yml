@@ -18,3 +18,6 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 volumes:
   my-db:
+networks:
+  my-network:
+    driver: bridge
