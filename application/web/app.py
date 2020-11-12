@@ -38,7 +38,9 @@ api.add_resource(get_most_dest_airport, '/most_dest_airports')
 api.add_resource(get_least_dest_airport, '/least_dest_airports')
 api.add_resource(get_most_takeoff_planes, '/most_takeoff_planes')
 api.add_resource(get_least_takeoff_planes, '/least_takeoff_planes')
-
+api.add_resource(get_flights_by_airline, '/flights_by_airline')
+api.add_resource(get_flights_by_origin_by_airline, '/flights_by_origin_by_airline')
+api.add_resource(get_flights_to_houston, '/flights_to_houston')
 
 if __name__ == '__main__':
     app.run(debug=True)

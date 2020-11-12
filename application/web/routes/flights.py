@@ -1,7 +1,7 @@
 from models.models import Flight
 from flask_restful import Resource
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import func
+from sqlalchemy import func, or_
 from flask import jsonify
 
 db = SQLAlchemy()
@@ -46,6 +46,24 @@ class get_least_takeoff_planes(Resource):
         result = db.session.query(Flight.tailnum, func.count(Flight.tailnum)).filter(Flight.tailnum.isnot(None)).group_by(Flight.tailnum).order_by(func.count(Flight.tailnum).asc()).limit(10).all()
         return jsonify(result_to_list_of_dict(result, "plane"))
 
+#SELECT carrier , count(dest) as nbdest from db.flights group by carrier 
+class get_flights_by_airline(Resource):
+    def get(self):
+        result = db.session.query(Flight.carrier, func.count(Flight.dest)).group_by(Flight.carrier).all()
+        return jsonify(result_to_list_of_dict(result, "carrier"))
+
+# SELECT carrier, origin, count(origin) as depart from db.flights group by carrier, origin
+class get_flights_by_origin_by_airline(Resource):
+    def get(self):
+        result = db.session.query(Flight.carrier, Flight.origin, func.count(Flight.origin)).group_by(Flight.carrier, Flight.origin).all()
+        return jsonify(result_to_list_of_dict2(result, "carrier"))
+
+#SELECT * from db.flights where dest ='IAH' or dest ='HOU'
+class get_flights_to_houston(Resource):
+    def get(self):
+        resultat = Flight.query.filter(or_(Flight.dest == "IAH", Flight.dest == "HOU")).count()
+        return resultat
+
 def row2dict(row):
     d = []
     for column in row:
@@ -59,8 +77,21 @@ def listrow_to_dict(list, column_name = "airport"):
     d["count"] = list[1]
     return d
 
+def listrow_to_dict2(list, column_name = "airport"):
+    d = {}
+    d[column_name] = list[0]
+    d["count"] = list[2]
+    d["origin"] = list[1]
+    return d
+
 def result_to_list_of_dict(result, column_name = "airport"):
     d = []
     list1 = [row for row in result]
     d = [listrow_to_dict(row2dict(el), column_name) for el in list1]
+    return d
+
+def result_to_list_of_dict2(result, column_name = "airport"):
+    d = []
+    list1 = [row for row in result]
+    d = [listrow_to_dict2(row2dict(el), column_name) for el in list1]
     return d
