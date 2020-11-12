@@ -1,20 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AirportsComponent } from './components/airports/airports.component';
+
+import { QuestionOneComponent } from './question-one/question-one.component';
+
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+
+
+
+
+
+import {HttpClientModule} from "@angular/common/http";
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AirportsComponent
+
+    QuestionOneComponent
+
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+ 
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
