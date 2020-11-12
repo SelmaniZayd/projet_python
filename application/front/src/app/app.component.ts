@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Config } from 'protractor';
+import { ConfigService } from './config.service';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +12,17 @@ export class AppComponent implements OnInit{
   title = 'front';
   airlines = [];
 
+
  constructor(
-   private http: HttpClient
+   private http: HttpClient,
+   private airports : ConfigService
  ) {
 
  }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:5000/').subscribe((res: string) => {
-      console.log(res);
-      
-      this.title = res;
-    });
+    
 
   }
 }
+
