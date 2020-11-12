@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Config } from 'protractor';
 import { ConfigService } from './config.service';
@@ -8,9 +7,9 @@ import { ConfigService } from './config.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'front';
-  airlines = [];
+
 
 
  constructor(
