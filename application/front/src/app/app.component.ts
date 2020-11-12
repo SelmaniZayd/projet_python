@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Config } from 'protractor';
-import { ConfigService } from './config.service';
+import { ConfigService } from './services/config.service';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +10,12 @@ import { ConfigService } from './config.service';
 export class AppComponent implements OnInit {
   title = 'front';
 
-
-
- constructor(
-   private http: HttpClient,
-   private airports : ConfigService
- ) {
-
- }
+  constructor(
+    private http: HttpClient,
+    private airports: ConfigService
+  ) { }
 
   ngOnInit(): void {
-    
 
   }
 }
