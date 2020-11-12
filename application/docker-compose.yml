@@ -11,6 +11,8 @@ services:
       - '4200:4200'
     volumes:
       - './front:/home/node/app'
+    networks:
+      - my-network
   web:
     build: ./web
     ports:
@@ -21,6 +23,8 @@ services:
       FLASK_ENV: development
     depends_on:
       - db
+    networks:
+      - my-network
   db:
     image: mysql:5.7
     restart: always
@@ -37,5 +41,10 @@ services:
       - ./files/:/var/lib/mysql-files/
       - my-db:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - my-network
 volumes:
   my-db:
+networks:
+  my-network:
+    driver: bridge

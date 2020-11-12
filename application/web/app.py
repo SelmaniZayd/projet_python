@@ -3,11 +3,13 @@ from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
 from routes.index import *
 from routes.flights import *
+from flask_cors import CORS
 
 app = Flask(__name__)
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://user:password@db/db'
 db = SQLAlchemy(app)
+CORS(app)
 
 api.add_resource(hello_world, '/')
 

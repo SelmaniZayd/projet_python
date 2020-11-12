@@ -3,7 +3,7 @@ from flask_restful import Resource
 
 class hello_world(Resource):
     def get(self):
-        return 'Hello world 3'
+        return 'Hello world 3', 201
 # *********** AIRLINES *************
 class get_airlines(Resource):
     def get(self):
