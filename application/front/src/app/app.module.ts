@@ -19,6 +19,8 @@ import { QueryExecuterComponent } from './components/query-executer/query-execut
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { FlightsByAirlinesComponent } from './components/flights-by-airlines/flights-by-airlines.component';
+import { MostLeastTakeoffPlanesComponent } from './components/most-least-takeoff-planes/most-least-takeoff-planes.component';
+import { MostLeastDestAirportsComponent } from './components/most-least-dest-airports/most-least-dest-airports.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { FlightsByAirlinesComponent } from './components/flights-by-airlines/fli
     PlanesComponent,
     QueryExecuterComponent,
     BarChartComponent,
-    FlightsByAirlinesComponent
+    FlightsByAirlinesComponent,
+    MostLeastTakeoffPlanesComponent,
+    MostLeastDestAirportsComponent
   ],
   imports: [
     BrowserModule,
