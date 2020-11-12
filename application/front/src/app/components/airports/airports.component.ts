@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Airport } from 'src/app/models/airport';
 import { ConfigService } from 'src/app/services/config.service';
+import { TransformService } from 'src/app/services/transform.service';
 
 @Component({
   selector: 'app-airports',
@@ -18,24 +19,17 @@ export class AirportsComponent implements OnInit {
   data: MatTableDataSource<Airport>;
   columns: string[];
 
-  constructor(private configService: ConfigService) {
+  constructor(private configService: ConfigService, private transform: TransformService) {
     
   }
 
   ngOnInit(): void {
     this.configService.getPlanes().subscribe(async res => {
       this.data = new MatTableDataSource<Airport>(res);
-      setTimeout(() => this.columns = this.get_columns_from_json(res))
+      setTimeout(() => this.columns = this.transform.get_columns_from_json(res))
     });
   }
 
-  get_columns_from_json(json) {
-    const list = [];
-    for (const key in json[0]) {
-      list.push(key);
-    }
-    return list
-  }
 
 }
 

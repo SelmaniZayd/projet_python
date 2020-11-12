@@ -16,6 +16,9 @@ import { FlightsComponent } from './components/flights/flights.component';
 import { AirlinesComponent } from './components/airlines/airlines.component';
 import { PlanesComponent } from './components/planes/planes.component';
 import { QueryExecuterComponent } from './components/query-executer/query-executer.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { FlightsByAirlinesComponent } from './components/flights-by-airlines/flights-by-airlines.component';
 
 
 @NgModule({
@@ -28,7 +31,9 @@ import { QueryExecuterComponent } from './components/query-executer/query-execut
     FlightsComponent,
     AirlinesComponent,
     PlanesComponent,
-    QueryExecuterComponent
+    QueryExecuterComponent,
+    BarChartComponent,
+    FlightsByAirlinesComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,7 @@ import { QueryExecuterComponent } from './components/query-executer/query-execut
     BrowserAnimationsModule,
     MaterialModule,
     DynamicTableModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -37,6 +37,10 @@ export class ConfigService {
       return this.http.get<any>(this.urlTimeZone);
     }
 
+    getFlightsByAirlines(): Observable<any> {
+      return this.http.get("http://localhost:5000/flights_by_airline");
+    }
+
 
 
 }
