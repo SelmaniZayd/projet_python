@@ -12,6 +12,10 @@ import { DynamicTableModule } from 'material-dynamic-table';
 import { AirportsComponent } from './components/airports/airports.component';
 import { TableComponent } from './components/table/table.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FlightsComponent } from './components/flights/flights.component';
+import { AirlinesComponent } from './components/airlines/airlines.component';
+import { PlanesComponent } from './components/planes/planes.component';
+import { QueryExecuterComponent } from './components/query-executer/query-executer.component';
 
 
 @NgModule({
@@ -20,7 +24,11 @@ import { HeaderComponent } from './components/header/header.component';
     QuestionOneComponent,
     AirportsComponent,
     TableComponent,
-    HeaderComponent
+    HeaderComponent,
+    FlightsComponent,
+    AirlinesComponent,
+    PlanesComponent,
+    QueryExecuterComponent
   ],
   imports: [
     BrowserModule,
