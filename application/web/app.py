@@ -6,8 +6,10 @@ from routes.flights import *
 
 app = Flask(__name__)
 api = Api(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://user:password@localhost:3306/db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://user:password@db/db'
 db = SQLAlchemy(app)
+
+api.add_resource(hello_world, '/')
 
 api.add_resource(get_airlines, '/airlines')
 api.add_resource(get_airlines_by_carrier, '/airlines/<string:carrier>')

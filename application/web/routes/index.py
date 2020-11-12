@@ -1,6 +1,10 @@
 from models.models import Airline, Plane, Airport, Weather
 from flask_restful import Resource
 
+class hello_world(Resource):
+    def get(self):
+        return 'Hello world 3'
+# *********** AIRLINES *************
 class get_airlines(Resource):
     def get(self):
         return Airline.get_delete_put_post()
@@ -9,6 +13,7 @@ class get_airlines_by_carrier(Resource):
     def get(self, carrier):
         return Airline.get_delete_put_post(carrier)
 
+# *********** PLANES *************
 class get_planes(Resource):
     def get(self):
         items = Plane.query.limit(300).all()
@@ -18,6 +23,7 @@ class get_planes_by_tailnum(Resource):
     def get(self, tailnum):
         return Plane.get_delete_put_post(tailnum)
 
+# *********** AIRPORTs *************
 class get_airports(Resource):
     def get(self):
         items = Airport.query.limit(300).all()
@@ -27,6 +33,7 @@ class get_airports_by_faa(Resource):
     def get(self, faa):
         return Airport.get_delete_put_post(faa)
 
+# *********** WEATHER *************
 class get_weather(Resource):
     def get(self):
         items = Weather.query.limit(300).all()
