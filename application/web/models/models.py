@@ -8,8 +8,6 @@ class Airline(db.Model, FlaskSerializeMixin):
     carrier = db.Column(db.String(3), primary_key=True)
     name = db.Column(db.String(50))
     
-    #airline_flights = db.relationship("Flight", back_populates="airline")
-
 class Plane(db.Model, FlaskSerializeMixin):
     __tablename__ = 'planes'
     tailnum = db.Column(db.String(10), primary_key=True)
@@ -77,8 +75,8 @@ class Flight(db.Model, FlaskSerializeMixin):
     
     ##db.ForeignKeyConstraint(['flights.origin', 'flights.year', 'flights.month', 'flights.day', 'flights.hour'], ['weather.origin', 'weather.year', 'weather.month', 'weather.day', 'weather.hour'])
     
-    #airline = db.relationship("Airline", back_populates="airline_flights", foreign_keys=[carrier])
+    #airline = db.relationship("Airline", foreign_keys=[carrier])
     #airport_origin = db.relationship("Airport", foreign_keys=[origin])
     #airport_dest = db.relationship("Airport", foreign_keys=[dest])
 
-    #relationship_fields= ['airline', 'airport_dest']
+    #relationship_fields= ['airline', 'airport_origin', 'airport_dest']
