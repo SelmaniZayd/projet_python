@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ColumnConfig } from 'material-dynamic-table';
+import { Airport } from 'src/app/models/airport';
 import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
@@ -10,52 +12,31 @@ import { ConfigService } from 'src/app/services/config.service';
 })
 export class AirportsComponent implements OnInit {
 
-  data: object[] = [];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private configService: ConfigService) { }
+  data: MatTableDataSource<Airport>;
+  columns: string[];
 
-  ngOnInit(): void {
-    this.configService.getAirports().subscribe(res => this.data = res);
+  constructor(private configService: ConfigService) {
+    
   }
 
-  columns: ColumnConfig[] = [
-    {
-      name: 'faa',
-      displayName: 'faa',
-      type: 'string'
-    },
-    {
-      name: 'name',
-      displayName: 'name',
-      type: 'string'
-    },
-    {
-      name: 'lat',
-      displayName: 'lat',
-      type: 'number'
-    },
-    {
-      name: 'lon',
-      displayName: 'lon',
-      type: 'number'
-    },
-    {
-      name: 'tz',
-      displayName: 'tz',
-      type: 'number'
-    },
-    {
-      name: 'dst',
-      displayName: 'dst',
-      type: 'string'
-    },
-    {
-      name: 'tzone',
-      displayName: 'tzone',
-      type: 'string'
+  ngOnInit(): void {
+    this.configService.getPlanes().subscribe(async res => {
+      this.data = new MatTableDataSource<Airport>(res);
+      setTimeout(() => this.columns = this.get_columns_from_json(res))
+    });
+  }
+
+  get_columns_from_json(json) {
+    const list = [];
+    for (const key in json[0]) {
+      list.push(key);
     }
-  ];
+    return list
+  }
 
-
-  dataSource = new MatTableDataSource<object>(this.data);
 }
+
+

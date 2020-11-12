@@ -10,13 +10,17 @@ import { QuestionOneComponent } from './components/question-one/question-one.com
 import { MaterialModule } from './material-module';
 import { DynamicTableModule } from 'material-dynamic-table';
 import { AirportsComponent } from './components/airports/airports.component';
+import { TableComponent } from './components/table/table.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionOneComponent,
-    AirportsComponent
+    AirportsComponent,
+    TableComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
