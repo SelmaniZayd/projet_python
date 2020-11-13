@@ -1,0 +1,6 @@
+<div class="header" *ngIf="data">
+  <h1>Combien de vols chaque compagnie a desservi par aeroport d'origine</h1>
+</div>
+<div class="container">
+  <app-grouped-bar-chart [multi]="data" [xAxisLabel]="'Flights'" [yAxisLabel]="'Airlines'"></app-grouped-bar-chart>
+</div>

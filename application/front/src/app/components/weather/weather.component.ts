@@ -7,11 +7,11 @@ import { ConfigService } from 'src/app/services/config.service';
 import { TransformService } from 'src/app/services/transform.service';
 
 @Component({
-  selector: 'app-flights',
-  templateUrl: './flights.component.html',
-  styleUrls: ['./flights.component.scss']
+  selector: 'app-weather',
+  templateUrl: './weather.component.html',
+  styleUrls: ['./weather.component.scss']
 })
-export class FlightsComponent implements OnInit {
+export class WeatherComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -24,10 +24,11 @@ export class FlightsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.configService.getFlights().subscribe(async res => {
+    this.configService.getWeather().subscribe(async res => {
       this.data = new MatTableDataSource<Airport>(res);
       setTimeout(() => this.columns = this.transform.get_columns_from_json(res))
     });
 
   }
+
 }
