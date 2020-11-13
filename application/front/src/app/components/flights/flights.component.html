@@ -1,1 +1,6 @@
-<p>flights works!</p>
+<div class="header">
+    <h1> Flights</h1>
+</div>
+<ng-container *ngIf="data">
+    <app-table [dataSource]="data" [displayedColumns]="columns"></app-table>
+</ng-container>

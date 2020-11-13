@@ -29,7 +29,7 @@ export class FlightsByAirlinesComponent implements OnInit {
   from_json_to_bar_chart(json) {
     const list = [];
     for (const obj of json) {
-      list.push({ name: obj.carrier, value: obj.count });
+      list.push({ name: obj.carrier, value: +obj.count });
     }
     return list;
   }

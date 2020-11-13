@@ -24,7 +24,7 @@ export class AirportsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.configService.getPlanes().subscribe(async res => {
+    this.configService.getAirports().subscribe(async res => {
       this.data = new MatTableDataSource<Airport>(res);
       setTimeout(() => this.columns = this.transform.get_columns_from_json(res))
     });

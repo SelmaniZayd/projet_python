@@ -54,7 +54,19 @@ export class ConfigService {
     }
 
     getLeastDestAirports(): Observable<any> {
-      return this.http.get("http://localhost:5000/most_least_airports");
+      return this.http.get("http://localhost:5000/least_dest_airports");
+    }
+
+    getFlights(): Observable<any> {
+      return this.http.get("http://localhost:5000/flights");
+    }
+
+    getWeather(): Observable<any> {
+      return this.http.get("http://localhost:5000/weather");
+    }
+
+    getFlightsByOriginByAirline(): Observable<any> {
+      return this.http.get("http://localhost:5000/flights_by_origin_by_airline")
     }
 
 

@@ -21,6 +21,11 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { FlightsByAirlinesComponent } from './components/flights-by-airlines/flights-by-airlines.component';
 import { MostLeastTakeoffPlanesComponent } from './components/most-least-takeoff-planes/most-least-takeoff-planes.component';
 import { MostLeastDestAirportsComponent } from './components/most-least-dest-airports/most-least-dest-airports.component';
+import { WeatherComponent } from './components/weather/weather.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { FlightsByOriginByAirlineComponent } from './components/flights-by-origin-by-airline/flights-by-origin-by-airline.component';
+import { GroupedBarChartComponent } from './components/grouped-bar-chart/grouped-bar-chart.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 
 
 @NgModule({
@@ -37,7 +42,12 @@ import { MostLeastDestAirportsComponent } from './components/most-least-dest-air
     BarChartComponent,
     FlightsByAirlinesComponent,
     MostLeastTakeoffPlanesComponent,
-    MostLeastDestAirportsComponent
+    MostLeastDestAirportsComponent,
+    WeatherComponent,
+    LandingPageComponent,
+    FlightsByOriginByAirlineComponent,
+    GroupedBarChartComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,

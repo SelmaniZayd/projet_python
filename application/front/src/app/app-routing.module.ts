@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AirlinesComponent } from './components/airlines/airlines.component';
 import { AirportsComponent } from './components/airports/airports.component';
-import { FlightsByAirlinesComponent } from './components/flights-by-airlines/flights-by-airlines.component';
-import { MostLeastDestAirportsComponent } from './components/most-least-dest-airports/most-least-dest-airports.component';
-import { MostLeastTakeoffPlanesComponent } from './components/most-least-takeoff-planes/most-least-takeoff-planes.component';
+import { FlightsByOriginByAirlineComponent } from './components/flights-by-origin-by-airline/flights-by-origin-by-airline.component';
+import { FlightsComponent } from './components/flights/flights.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { PlanesComponent } from './components/planes/planes.component';
+import { WeatherComponent } from './components/weather/weather.component';
 
 const routes: Routes = [
-  { path: '', component: MostLeastDestAirportsComponent},
+  { path: '', component: LandingPageComponent},
+  { path: 'airport', component: AirportsComponent},
+  { path: 'airlines', component: AirlinesComponent},
+  { path: 'planes', component: PlanesComponent},
+  { path: 'weather', component: WeatherComponent},
+  { path: 'flights', component: FlightsComponent},
   { path: '**', redirectTo: '' }
 ];
 
