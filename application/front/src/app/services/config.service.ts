@@ -69,6 +69,10 @@ export class ConfigService {
       return this.http.get("http://localhost:5000/flights_by_origin_by_airline")
     }
 
+    getWeatherByOrigin(): Observable<any> {
+      return this.http.get("http://localhost:5000/weather/avg");
+    }
+
 
 
 }

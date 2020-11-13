@@ -2,6 +2,7 @@ from models.models import Airline, Plane, Airport, Weather
 from flask_restful import Resource
 from flask_sqlalchemy import SQLAlchemy
 from flask import jsonify
+from sqlalchemy import func
 
 db = SQLAlchemy()
 
@@ -74,7 +75,37 @@ class get_weather_by_day(Resource):
 
 # SELECT origin, month, avg(temp) FROM db.weather group by origin, year, month;
 class get_weather_avg_by_origin(Resource):
-    def get(self, origin):
-        resultat  = db.session.query(Weather.origin,Weather.month, func.avg(Weather.temp)).filter(Weather.origin == origin).group_by(Weather.origin,Weather.year,Weather.month)
-        return 'blabla'
-        # return Weather.json_filter_by(origin=origin, year=year, month=month, day=day)
+    def get(self):
+        result  = db.session.query(Weather.origin, Weather.month, func.avg(Weather.temp)).group_by(Weather.origin,Weather.year,Weather.month)
+        return jsonify(result_to_list_of_dict2(result, "origin", "month"))
+
+def row2dict(row):
+    d = []
+    for column in row:
+        d.append(str(column))
+    return d
+
+def listrow_to_dict(list, column_name = "airport"):
+    d = {}
+    d[column_name] = list[0]
+    d["count"] = list[1]
+    return d
+
+def listrow_to_dict2(list, column_name = "airport", second_column = "origin"):
+    d = {}
+    d[column_name] = list[0]
+    d[second_column] = list[1]
+    d["count"] = list[2]
+    return d
+
+def result_to_list_of_dict(result, column_name = "airport"):
+    d = []
+    list1 = [row for row in result]
+    d = [listrow_to_dict(row2dict(el), column_name) for el in list1]
+    return d
+
+def result_to_list_of_dict2(result, column_name = "airport", second_column = "origin"):
+    d = []
+    list1 = [row for row in result]
+    d = [listrow_to_dict2(row2dict(el), column_name, second_column) for el in list1]
+    return d

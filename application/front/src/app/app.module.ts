@@ -26,6 +26,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { FlightsByOriginByAirlineComponent } from './components/flights-by-origin-by-airline/flights-by-origin-by-airline.component';
 import { GroupedBarChartComponent } from './components/grouped-bar-chart/grouped-bar-chart.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { WeatherPerAirportComponent } from './components/weather-per-airport/weather-per-airport.component';
+import { AreaChartComponent } from './components/area-chart/area-chart.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
     LandingPageComponent,
     FlightsByOriginByAirlineComponent,
     GroupedBarChartComponent,
-    PieChartComponent
+    PieChartComponent,
+    WeatherPerAirportComponent,
+    AreaChartComponent
   ],
   imports: [
     BrowserModule,

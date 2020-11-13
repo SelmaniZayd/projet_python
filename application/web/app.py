@@ -50,7 +50,7 @@ api.add_resource(get_flights_by_origin, '/flights/from/<string:origin>')
 api.add_resource(get_flights_by_dest, '/flights/to/<string:dest>')
 
 
-api.add_resource(get_weather_avg_by_origin, '/weather/avg/<int:month>')
+api.add_resource(get_weather_avg_by_origin, '/weather/avg')
 
 
 

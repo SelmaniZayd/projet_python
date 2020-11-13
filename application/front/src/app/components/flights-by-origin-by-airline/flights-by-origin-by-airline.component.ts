@@ -36,6 +36,7 @@ export class FlightsByOriginByAirlineComponent implements OnInit {
       series.push({ name: obj.origin, value: +obj.count });
 
     }
+    list.push({ name: currentCompany, series: series });
     return list;
   }
 

@@ -6,11 +6,13 @@ import { FlightsByOriginByAirlineComponent } from './components/flights-by-origi
 import { FlightsComponent } from './components/flights/flights.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { PlanesComponent } from './components/planes/planes.component';
+import { WeatherPerAirportComponent } from './components/weather-per-airport/weather-per-airport.component';
 import { WeatherComponent } from './components/weather/weather.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent},
   { path: 'airport', component: AirportsComponent},
+  { path: 'weather_airport', component: WeatherPerAirportComponent},
   { path: 'airlines', component: AirlinesComponent},
   { path: 'planes', component: PlanesComponent},
   { path: 'weather', component: WeatherComponent},
