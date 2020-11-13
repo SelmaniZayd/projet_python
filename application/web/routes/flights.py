@@ -1,7 +1,7 @@
 from models.models import Flight
 from flask_restful import Resource
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import func, or_
+from sqlalchemy import func, or_, and_
 from flask import jsonify
 
 db = SQLAlchemy()
@@ -63,12 +63,19 @@ class get_flights_to_houston(Resource):
     def get(self):
         resultat = Flight.query.filter(or_(Flight.dest == "IAH", Flight.dest == "HOU")).count()
         return resultat
+  
+# flight with late depart     
+# SELECT * FROM db.flights where dep_delay > 1 ;
+class get_flights_with_late_depart(Resource):
+    def get(self,month,day,hour):
+        find_hour = hour+'%'
+        resultat = Flight.query.filter(and_(Flight.month == month, Flight.day == day, Flight.dep_time.like(find_hour)))
+        return Flight.json_list(resultat)
 
 def row2dict(row):
     d = []
     for column in row:
         d.append(str(column))
-
     return d
 
 def listrow_to_dict(list, column_name = "airport"):
@@ -95,3 +102,4 @@ def result_to_list_of_dict2(result, column_name = "airport"):
     list1 = [row for row in result]
     d = [listrow_to_dict2(row2dict(el), column_name) for el in list1]
     return d
+

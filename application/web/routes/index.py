@@ -67,3 +67,7 @@ class get_weather(Resource):
 class get_weather_by_pk(Resource):
     def get(self, origin, year, month, day, hour):
         return Weather.json_filter_by(origin=origin, year=year, month=month, day=day, hour=hour)
+
+class get_weather_by_day(Resource):
+    def get(self, origin, year, month, day):
+        return Weather.json_filter_by(origin=origin, year=year, month=month, day=day)
