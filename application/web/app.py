@@ -29,6 +29,8 @@ api.add_resource(get_tzones_not_dst_count, '/timezones/nodst/count')
 
 api.add_resource(get_weather, '/weather')
 api.add_resource(get_weather_by_pk, '/weather/<string:origin>/<string:year>/<string:month>/<string:day>/<string:hour>')
+api.add_resource(get_weather_by_day, '/weather/<string:origin>/<string:year>/<string:month>/<string:day>')
+
 
 api.add_resource(get_flights, '/flights')
 api.add_resource(get_flights_by_id, '/flights/<int:id>')
@@ -41,6 +43,7 @@ api.add_resource(get_least_takeoff_planes, '/least_takeoff_planes')
 api.add_resource(get_flights_by_airline, '/flights_by_airline')
 api.add_resource(get_flights_by_origin_by_airline, '/flights_by_origin_by_airline')
 api.add_resource(get_flights_to_houston, '/flights_to_houston')
+api.add_resource(get_flights_with_late_depart, '/flights/<int:month>/<int:day>/<string:hour>')
 
 if __name__ == '__main__':
     app.run(debug=True)
