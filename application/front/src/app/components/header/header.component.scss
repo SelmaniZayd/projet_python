@@ -1,0 +1,69 @@
+mat-toolbar {
+  height: 48px;
+  display: flex;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+    sans-serif;
+
+  .header-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+
+
+
+    .logo_title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-right: 60px;
+      cursor: pointer;
+      outline: 0;
+
+      .logo {
+        background: url("../../../assets/open-source.png");
+        margin-right: 15px;
+        background-size: cover;
+      }
+
+      h1 {
+        font-weight: bold;
+      }
+    }
+
+    .links {
+      display: flex;
+      flex-direction: row;
+
+      justify-content: space-between;
+      align-items: center;
+
+      button {
+        margin: 0 0.3rem;
+      }
+
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  margin-right: 14px;
+  outline: 0;
+}
+
+.underline-active {
+  background-color: grey;
+  transform: scale(0.95);
+}
+
+button {
+
+  &:hover {
+    background-color: grey;
+    transform: scale(0.95);
+  }
+
+}
