@@ -1,0 +1,9 @@
+<div class="header">
+    <h1> Flights</h1>
+</div>
+<div class="spinner" *ngIf="!data">
+    <mat-spinner></mat-spinner>
+</div>
+<ng-container *ngIf="data">
+    <app-table [dataSource]="data" [displayedColumns]="columns"></app-table>
+</ng-container>

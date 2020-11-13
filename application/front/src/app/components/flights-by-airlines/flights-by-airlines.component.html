@@ -1,0 +1,16 @@
+<div class="all">
+  <div class="header">
+    <h1>Combien de vols chaque compagnie a desservi</h1>
+  </div>
+  <div class="container">
+    <div class="left" *ngIf="data_for_table">
+      <app-table [dataSource]="data_for_table" [displayedColumns]="columns"></app-table>
+    </div>
+    <div class="right">
+      <app-bar-chart [single]="data" [xAxisLabel]="'Airline'" [yAxisLabel]="'Flights'"></app-bar-chart>
+    </div>
+  </div>
+  <div class="pie">
+    <app-pie-chart [single]="data"></app-pie-chart>
+  </div>
+</div>

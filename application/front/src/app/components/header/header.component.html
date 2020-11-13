@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <div class="header-wrapper">
+    <div class="logo_title" routerLink="/">
+      <mat-icon class="logo"></mat-icon>
+      <h1>DataLytics</h1>
+    </div>
+    <div class="links">
+      <ng-container>
+        <button mat-raised-button routerLink='/airlines' routerLinkActive="underline-active">Airlines</button>
+        <button mat-raised-button routerLink='/airport'
+          routerLinkActive="underline-active">Airports</button>
+        <button mat-raised-button routerLink='/planes' routerLinkActive="underline-active">Planes</button>
+        <button mat-raised-button routerLink='/weather' routerLinkActive="underline-active">Weather</button>
+        <button mat-raised-button routerLink='/flights' routerLinkActive="underline-active">Flights</button>
+        <button mat-raised-button routerLink='/weather_airport' routerLinkActive="underline-active">Weather by airport</button>
+      </ng-container>
+    </div>
+  </div>
+</mat-toolbar>

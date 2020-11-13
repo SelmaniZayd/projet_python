@@ -1,0 +1,23 @@
+<div class="header">
+  <h1>les 10 destinations les plus empruntés</h1>
+</div>
+<div class="container">
+  <div class="left" *ngIf="data_for_table">
+    <app-table [dataSource]="data_for_table" [displayedColumns]="columns"></app-table>
+  </div>
+  <div class="right">
+    <app-bar-chart [single]="data" [xAxisLabel]="'Plane'" [yAxisLabel]="'Flights'"></app-bar-chart>
+  </div>
+</div>
+
+<div class="header">
+  <h1> les destinations les moins empruntés</h1>
+</div>
+<div class="container">
+  <div class="left" *ngIf="data_for_table2">
+    <app-table [dataSource]="data_for_table2" [displayedColumns]="columns2"></app-table>
+  </div>
+  <div class="right">
+    <app-bar-chart [single]="data2" [xAxisLabel]="'Plane'" [yAxisLabel]="'Flights'"></app-bar-chart>
+  </div>
+</div>
