@@ -45,5 +45,8 @@ api.add_resource(get_flights_by_origin_by_airline, '/flights_by_origin_by_airlin
 api.add_resource(get_flights_to_houston, '/flights_to_houston')
 api.add_resource(get_flights_with_late_depart, '/flights/<int:month>/<int:day>/<string:hour>')
 
+api.add_resource(get_flights_by_dest, '/flights/destination/<string:dest>')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

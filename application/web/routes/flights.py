@@ -64,13 +64,25 @@ class get_flights_to_houston(Resource):
         resultat = Flight.query.filter(or_(Flight.dest == "IAH", Flight.dest == "HOU")).count()
         return resultat
   
-# flight with late depart     
-# SELECT * FROM db.flights where dep_delay > 1 ;
+# flight by month day,hour     
+# SELECT * FROM db.flights where month = '' AND day = '' AND hour = '';
 class get_flights_with_late_depart(Resource):
     def get(self,month,day,hour):
         find_hour = hour+'%'
         resultat = Flight.query.filter(and_(Flight.month == month, Flight.day == day, Flight.dep_time.like(find_hour)))
         return Flight.json_list(resultat)
+
+# flights by origin and destination
+
+# flights by origin
+
+# flights by destination
+# SELECT * from db.flights where dest = '';
+class get_flights_by_dest(Resource):
+    def get(self,dest):
+        resultat = Flight.query.filter(Flight.dest == dest)
+        return Flight.json_list(resultat)
+
 
 def row2dict(row):
     d = []
