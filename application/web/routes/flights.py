@@ -1,4 +1,4 @@
-from models.models import Flight
+from models.models import Flight, Airport, Plane, Airline
 from flask_restful import Resource
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func, or_, and_
@@ -28,17 +28,17 @@ class get_most_origin_airport(Resource):
 
 class get_most_dest_airport(Resource):
     def get(self):
-        result = db.session.query(Flight.dest, func.count(Flight.dest)).group_by(Flight.dest).order_by(func.count(Flight.dest).desc()).limit(10).all()
-        return jsonify(result_to_list_of_dict(result))
+        result = db.session.query(Flight.dest, Airport.name, func.count(Flight.dest)).filter(Flight.dest == Airport.faa).group_by(Flight.dest).order_by(func.count(Flight.dest).desc()).limit(10).all()
+        return jsonify(result_to_list_of_dict2(result, second_column="name"))
 
 class get_least_dest_airport(Resource):
     def get(self):
-        result = db.session.query(Flight.dest, func.count(Flight.dest)).group_by(Flight.dest).order_by(func.count(Flight.dest).asc()).limit(10).all()
-        return jsonify(result_to_list_of_dict(result))
+        result = db.session.query(Flight.dest, Airport.name, func.count(Flight.dest)).filter(Flight.dest == Airport.faa).group_by(Flight.dest).order_by(func.count(Flight.dest).asc()).limit(10).all()
+        return jsonify(result_to_list_of_dict2(result, second_column="name"))
 
 class get_most_takeoff_planes(Resource):
     def get(self):
-        result = db.session.query(Flight.tailnum, func.count(Flight.tailnum)).filter(Flight.tailnum.isnot(None)).group_by(Flight.tailnum).order_by(func.count(Flight.tailnum).desc()).limit(10).all()
+        result = db.session.query(Flight.tailnum,func.count(Flight.tailnum)).filter(Flight.tailnum.isnot(None)).group_by(Flight.tailnum).order_by(func.count(Flight.tailnum).desc()).limit(10).all()
         return jsonify(result_to_list_of_dict(result, "plane"))
 
 class get_least_takeoff_planes(Resource):
@@ -49,8 +49,8 @@ class get_least_takeoff_planes(Resource):
 #SELECT carrier , count(dest) as nbdest from db.flights group by carrier 
 class get_flights_by_airline(Resource):
     def get(self):
-        result = db.session.query(Flight.carrier, func.count(Flight.dest)).group_by(Flight.carrier).all()
-        return jsonify(result_to_list_of_dict(result, "carrier"))
+        result = db.session.query(Flight.carrier,Airline.name, func.count(Flight.dest)).filter(Flight.carrier == Airline.carrier).group_by(Flight.carrier).all()
+        return jsonify(result_to_list_of_dict2(result, "carrier", "name"))
 
 # SELECT carrier, origin, count(origin) as depart from db.flights group by carrier, origin
 class get_flights_by_origin_by_airline(Resource):
@@ -96,11 +96,11 @@ def listrow_to_dict(list, column_name = "airport"):
     d["count"] = list[1]
     return d
 
-def listrow_to_dict2(list, column_name = "airport"):
+def listrow_to_dict2(list, column_name = "airport", second_column = "origin"):
     d = {}
     d[column_name] = list[0]
+    d[second_column] = list[1]
     d["count"] = list[2]
-    d["origin"] = list[1]
     return d
 
 def result_to_list_of_dict(result, column_name = "airport"):
@@ -109,9 +109,9 @@ def result_to_list_of_dict(result, column_name = "airport"):
     d = [listrow_to_dict(row2dict(el), column_name) for el in list1]
     return d
 
-def result_to_list_of_dict2(result, column_name = "airport"):
+def result_to_list_of_dict2(result, column_name = "airport", second_column = "origin"):
     d = []
     list1 = [row for row in result]
-    d = [listrow_to_dict2(row2dict(el), column_name) for el in list1]
+    d = [listrow_to_dict2(row2dict(el), column_name, second_column) for el in list1]
     return d
 

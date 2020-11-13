@@ -24,7 +24,7 @@ class get_airlines_count(Resource):
 # *********** PLANES *************
 class get_planes(Resource):
     def get(self):
-        items = Plane.query.limit(300).all()
+        items = Plane.query.all()
         return Plane.json_list(items)
 
 class get_planes_by_tailnum(Resource):
@@ -38,7 +38,7 @@ class get_planes_count(Resource):
 # *********** AIRPORTs *************
 class get_airports(Resource):
     def get(self):
-        items = Airport.query.limit(300).all()
+        items = Airport.query.all()
         return Airport.json_list(items)
 
 class get_airports_by_faa(Resource):
@@ -61,7 +61,7 @@ class get_tzones_not_dst_count(Resource):
 # *********** WEATHER *************
 class get_weather(Resource):
     def get(self):
-        items = Weather.query.limit(300).all()
+        items = Weather.query.all()
         return Weather.json_list(items)
 
 class get_weather_by_pk(Resource):
