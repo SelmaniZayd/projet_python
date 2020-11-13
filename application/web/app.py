@@ -31,6 +31,7 @@ api.add_resource(get_weather, '/weather')
 api.add_resource(get_weather_by_pk, '/weather/<string:origin>/<string:year>/<string:month>/<string:day>/<string:hour>')
 api.add_resource(get_weather_by_day, '/weather/<string:origin>/<string:year>/<string:month>/<string:day>')
 
+api.add_resource(get_flights_by_dest, '/flights/to/<string:dest>')
 
 api.add_resource(get_flights, '/flights')
 api.add_resource(get_flights_by_id, '/flights/<int:id>')
@@ -45,7 +46,6 @@ api.add_resource(get_flights_by_origin_by_airline, '/flights_by_origin_by_airlin
 api.add_resource(get_flights_to_houston, '/flights_to_houston')
 api.add_resource(get_flights_with_late_depart, '/flights/<int:month>/<int:day>/<string:hour>')
 
-api.add_resource(get_flights_by_dest, '/flights/destination/<string:dest>')
 
 
 if __name__ == '__main__':
