@@ -71,3 +71,10 @@ class get_weather_by_pk(Resource):
 class get_weather_by_day(Resource):
     def get(self, origin, year, month, day):
         return Weather.json_filter_by(origin=origin, year=year, month=month, day=day)
+
+# SELECT origin, month, avg(temp) FROM db.weather group by origin, year, month;
+class get_weather_avg_by_origin(Resource):
+    def get(self, origin):
+        resultat  = db.session.query(Weather.origin,Weather.month, func.avg(Weather.temp)).filter(Weather.origin == origin).group_by(Weather.origin,Weather.year,Weather.month)
+        return 'blabla'
+        # return Weather.json_filter_by(origin=origin, year=year, month=month, day=day)

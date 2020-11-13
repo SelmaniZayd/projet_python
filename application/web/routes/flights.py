@@ -73,16 +73,23 @@ class get_flights_with_late_depart(Resource):
         return Flight.json_list(resultat)
 
 # flights by origin and destination
+class get_flights_by_origin_dest(Resource):
+    def get(self, origin, dest):
+        resultat = Flight.query.filter(and_(Flight.origin == origin, Flight.dest == dest ))
+        return Flight.json_list(resultat)
 
 # flights by origin
-
+class get_flights_by_origin(Resource):
+    def get(self, origin):
+        resultat = Flight.query.filter(Flight.origin == origin)
+        return Flight.json_list(resultat)
+    
 # flights by destination
 # SELECT * from db.flights where dest = '';
 class get_flights_by_dest(Resource):
-    def get(self,dest):
+    def get(self, dest):
         resultat = Flight.query.filter(Flight.dest == dest)
         return Flight.json_list(resultat)
-
 
 def row2dict(row):
     d = []
